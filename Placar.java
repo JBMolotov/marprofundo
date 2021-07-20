@@ -1,24 +1,22 @@
+
+
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLayeredPane;
-import java.awt.Color;
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import java.awt.Font;
-import javax.swing.JEditorPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Placar extends JFrame {
 
 	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
@@ -42,84 +40,104 @@ public class Placar extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLUE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setForeground(Color.WHITE);
-		editorPane.setBounds(50, 132, 205, 9);
-		contentPane.add(editorPane);
-		
-		JLabel lblNewLabel_1 = new JLabel("Melhor Jogador:");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
-		lblNewLabel_1.setBounds(518, 41, 276, 96);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("Delamaro");
-		lblNewLabel_1_2.setForeground(Color.WHITE);
-		lblNewLabel_1_2.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
-		lblNewLabel_1_2.setBounds(519, 114, 221, 48);
-		contentPane.add(lblNewLabel_1_2);
-		
 		JLabel lblNewLabel_1_1 = new JLabel("Placar");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 49));
-		lblNewLabel_1_1.setBounds(50, 42, 157, 96);
+		lblNewLabel_1_1.setFont(new Font("Pagul", Font.BOLD, 40));
+		lblNewLabel_1_1.setBounds(333, 51, 157, 96);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("1. Delamaro - 1000pts");
-		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_1.setBounds(50, 158, 205, 16);
-		contentPane.add(lblNewLabel_2_1);
+		JLabel lbl1Lugar = new JLabel("1. Vazio");
+		lbl1Lugar.setForeground(Color.WHITE);
+		lbl1Lugar.setFont(new Font("Pagul", Font.BOLD, 25));
+		lbl1Lugar.setBounds(257, 145, 309, 30);
+		contentPane.add(lbl1Lugar);
 		
-		JLabel lblNewLabel_2 = new JLabel("2. Matheus - 1000pts");
-		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(50, 194, 205, 16);
-		contentPane.add(lblNewLabel_2);
+		JLabel lbl2Lugar = new JLabel("2. Vazio");
+		lbl2Lugar.setFont(new Font("Pagul", Font.BOLD, 22));
+		lbl2Lugar.setForeground(Color.WHITE);
+		lbl2Lugar.setBounds(284, 187, 243, 23);
+		contentPane.add(lbl2Lugar);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("3. João - 1000pts");
-		lblNewLabel_2_2.setForeground(Color.WHITE);
-		lblNewLabel_2_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_2.setBounds(50, 227, 205, 16);
-		contentPane.add(lblNewLabel_2_2);
+		JLabel lbl3Lugar = new JLabel("3. Vazio");
+		lbl3Lugar.setForeground(Color.WHITE);
+		lbl3Lugar.setFont(new Font("Pagul", Font.BOLD, 20));
+		lbl3Lugar.setBounds(305, 222, 205, 16);
+		contentPane.add(lbl3Lugar);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("4. Maria - 1000pts");
-		lblNewLabel_2_3.setForeground(Color.WHITE);
-		lblNewLabel_2_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_3.setBounds(50, 265, 205, 16);
-		contentPane.add(lblNewLabel_2_3);
+		JLabel lbl4Lugar = new JLabel("4. Vazio");
+		lbl4Lugar.setForeground(Color.WHITE);
+		lbl4Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl4Lugar.setBounds(310, 250, 205, 16);
+		contentPane.add(lbl4Lugar);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("8. Delamaro - 1000pts");
-		lblNewLabel_2_1_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_1_1.setBounds(50, 399, 205, 16);
-		contentPane.add(lblNewLabel_2_1_1);
+		JLabel lbl5Lugar = new JLabel("5. Vazio");
+		lbl5Lugar.setForeground(Color.WHITE);
+		lbl5Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl5Lugar.setBounds(310, 280, 205, 16);
+		contentPane.add(lbl5Lugar);
 		
-		JLabel lblNewLabel_2_4 = new JLabel("7. Matheus - 1000pts");
-		lblNewLabel_2_4.setForeground(Color.WHITE);
-		lblNewLabel_2_4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_4.setBounds(50, 366, 205, 16);
-		contentPane.add(lblNewLabel_2_4);
+		JLabel lbl6Lugar = new JLabel("6. Vazio");
+		lbl6Lugar.setForeground(Color.WHITE);
+		lbl6Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl6Lugar.setBounds(310, 310, 205, 16);
+		contentPane.add(lbl6Lugar);
 		
-		JLabel lblNewLabel_2_2_1 = new JLabel("6. João - 1000pts");
-		lblNewLabel_2_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_2_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_2_1.setBounds(50, 332, 205, 16);
-		contentPane.add(lblNewLabel_2_2_1);
+		JLabel lbl7Lugar = new JLabel("7. Vazio");
+		lbl7Lugar.setForeground(Color.WHITE);
+		lbl7Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl7Lugar.setBounds(310, 340, 205, 16);
+		contentPane.add(lbl7Lugar);
 		
-		JLabel lblNewLabel_2_3_1 = new JLabel("5. Maria - 1000pts");
-		lblNewLabel_2_3_1.setForeground(Color.WHITE);
-		lblNewLabel_2_3_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblNewLabel_2_3_1.setBounds(50, 298, 205, 16);
-		contentPane.add(lblNewLabel_2_3_1);
+		JLabel lbl8Lugar;
+		lbl8Lugar = new JLabel("8. Vazio");
+		lbl8Lugar.setForeground(Color.WHITE);
+		lbl8Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl8Lugar.setBounds(310, 370, 205, 16);
+		contentPane.add(lbl8Lugar);
+		
+		JLabel lbl9Lugar = new JLabel("9. Vazio");
+		lbl9Lugar.setForeground(Color.WHITE);
+		lbl9Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl9Lugar.setBounds(310, 400, 205, 16);
+		contentPane.add(lbl9Lugar);
+		
+		JLabel lbl10Lugar = new JLabel("10. Vazio");
+		lbl10Lugar.setForeground(Color.WHITE);
+		lbl10Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+		lbl10Lugar.setBounds(310, 430, 205, 16);
+		contentPane.add(lbl10Lugar);
+		
+
+		
+		
+		
+		JPanel pnlBack = new JPanel();
+		pnlBack.setBackground(new Color(5, 61, 87));
+		pnlBack.setBounds(200, 0, 400, 600);
+		contentPane.add(pnlBack);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Inicial frame = new Inicial();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btnSair.setForeground(new Color(5, 61, 87));
+		btnSair.setFont(new Font("Pagul", Font.BOLD, 20));
+		btnSair.setBackground(new Color(211, 214, 216));
+		btnSair.setBounds(674, 12, 91, 43);
+		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("/Users/matheuscunha/USP/object-oriented/MarProfundo/back4.png"));
-		lblNewLabel.setBounds(0, 0, 800, 572);
+		lblNewLabel.setIcon(new ImageIcon(Placar.class.getResource("/view/back2.jpeg")));
+		lblNewLabel.setBounds(0, 0, 800, 600);
 		contentPane.add(lblNewLabel);
 	}
 }
