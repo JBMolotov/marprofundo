@@ -63,7 +63,7 @@ public class TelaPergunta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTrecho_inicial = new JLabel("Qual a porcentagem de emiss�es de di�xido de carbono que s�o absorvidas pelo oceanos todos os anos?");
+		JLabel lblTrecho_inicial = new JLabel("Qual a porcentagem de emissões de dióxido de carbono que s�o absorvidas pelo oceanos todos os anos?");
 		lblTrecho_inicial.setForeground(Color.WHITE);
 		//lblTrecho_inicial.setHorizontalAlignment(SwingConstants.EAST);
 		lblTrecho_inicial.setFont(new Font("Pagul", Font.BOLD, 16));

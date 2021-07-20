@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -11,7 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ThreadLocalRandom;
 import java.awt.event.ActionEvent;
+
 
 public class TelaCategoria extends JFrame {
 
@@ -35,10 +38,17 @@ public class TelaCategoria extends JFrame {
 		
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	//Cria a aplicação
 	public TelaCategoria() {
+		String cat[] = {"História", "Biologia", "Geografia", "Matemática"};
+		int randNum = ThreadLocalRandom.current().nextInt(0, 3 + 1);
+		initialize(cat[randNum]);
+		
+	}
+	
+	
+	//Cria a tela
+	public void initialize(String materia) {
 		setResizable(false);
 		setBackground(Color.WHITE);
 		setTitle("Categoria");
@@ -98,7 +108,7 @@ public class TelaCategoria extends JFrame {
 		lblSorteando.setBounds(140, 135, 508, 84);
 		contentPane.add(lblSorteando);
 		
-		JLabel lblMateria = new JLabel("Materia");
+		JLabel lblMateria = new JLabel(materia);
 		lblMateria.setForeground(new Color(255, 255, 255));
 		lblMateria.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMateria.setFont(new Font("Pagul", Font.BOLD, 30));
