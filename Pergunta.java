@@ -1,16 +1,12 @@
-package view;
+//package view;
 
 public class Pergunta {
 	public String pergunta;
-	public String categoria;
-	public String alternativa[];
-	public char dificuldade;
+	public String[] alternativa = {"","","",""};
+	public String dificuldade;
 	
-	public Pergunta(String pergunta, String categoria, String alternativa[], char dificuldade) {
-		this.pergunta = pergunta;
-		this.categoria = categoria;
-		this.alternativa = alternativa;
-		this.dificuldade = dificuldade;
+	public Pergunta() {
+
 	}
 	
 	public static void main(String[] args) {
@@ -25,13 +21,6 @@ public class Pergunta {
 		this.pergunta = pergunta;
 	}
 	
-	public String getCategoria() {
-		return this.categoria;
-	}
-	
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
 	
 	public String[] getAlternativa() {
 		return this.alternativa;
@@ -41,11 +30,11 @@ public class Pergunta {
 		this.alternativa = alternativa;
 	}
 	
-	public char getDificuldade() {
+	public String getDificuldade() {
 		return this.dificuldade;
 	}
 	
-	public void setDificuldade(char dificuldade) {
+	public void setDificuldade(String dificuldade) {
 		this.dificuldade = dificuldade;
 	}
 	

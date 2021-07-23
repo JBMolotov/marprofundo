@@ -5,25 +5,47 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Arquivos {
-  public static String[] readFile(String fileName) {
-	int wordCount = 0; 
-	String placarString[] = new String[100];
+	public static String[] lerPerguntas(String fileName)
+	{
+		int wordCount = 0; 
+		String perguntasString[] = new String[100];
+			
+		try {
+		  File myObj = new File("Datasets/"+ fileName + ".csv");
+		  Scanner myReader = new Scanner(myObj);
+		  while (myReader.hasNextLine()) {
+		    String data = myReader.nextLine();
+		    perguntasString[wordCount++] = data;
+		  }
+		  myReader.close();
+		} catch (FileNotFoundException e) {
+		  System.out.println("An error occurred.");
+		  e.printStackTrace();
+		}
 		
-	try {
-	  File myObj = new File(fileName);
-	  Scanner myReader = new Scanner(myObj);
-	  while (myReader.hasNextLine()) {
-	    String data = myReader.nextLine();
-	    placarString[wordCount++] = data;
-	  }
-	  myReader.close();
-	} catch (FileNotFoundException e) {
-	  System.out.println("An error occurred.");
-	  e.printStackTrace();
+		return perguntasString;
 	}
 	
-	return placarString;
-  }
+	public static String[] lerPlacar(String fileName) 
+	{
+		int wordCount = 0; 
+		String placarString[] = new String[100];
+			
+		try {
+		  File myObj = new File(fileName);
+		  Scanner myReader = new Scanner(myObj);
+		  while (myReader.hasNextLine()) {
+		    String data = myReader.nextLine();
+		    placarString[wordCount++] = data;
+		  }
+		  myReader.close();
+		} catch (FileNotFoundException e) {
+		  System.out.println("An error occurred.");
+		  e.printStackTrace();
+		}
+		
+		return placarString;
+	}
   
   public static void writeFile(String fileName, String lineStrings[]) {			
 	try {

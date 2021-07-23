@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.awt.event.ActionEvent;
 import java.awt.TextArea;
 
@@ -27,7 +29,8 @@ public class TelaPergunta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaPergunta frame = new TelaPergunta('a');
+					DeckDePerguntas p = null;
+					TelaPergunta frame = new TelaPergunta('a', p);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,23 +39,45 @@ public class TelaPergunta extends JFrame {
 		});
 	}
 	
+	static void shuffleArray(int[] ar)
+	  {
+	    // vamos usar essa função para tornar as alternativas aleatorias
+	    Random rnd = ThreadLocalRandom.current();
+	    for (int i = ar.length - 1; i > 0; i--)
+	    {
+	      int index = rnd.nextInt(i + 1);
+	      // Simple swap
+	      int a = ar[index];
+	      ar[index] = ar[i];
+	      ar[i] = a;
+	    }
+	  }
+	
+	
 	//Cria a aplicação
-	public TelaPergunta(char dificuldade) {
+	public TelaPergunta(char dificuldade, DeckDePerguntas deck) {
+		
+		int randPerg = ThreadLocalRandom.current().nextInt(0, 5);
+		
+		int ordem[] = {0,1,2,3};
+		shuffleArray(ordem);
 		
 		if (dificuldade == 'f') {
-			JOptionPane.showMessageDialog(null, "Você selecionou a fácil");
+			initialize(deck.arrayPerguntas[deck.faceis[randPerg]], deck.categoria, ordem);
 		} else if (dificuldade == 'm') {
-			JOptionPane.showMessageDialog(null, "Você selecionou a média");
+			initialize(deck.arrayPerguntas[deck.medias[randPerg]], deck.categoria, ordem);
 		} else if (dificuldade == 'd') {
-			JOptionPane.showMessageDialog(null, "Você selecionou a díficil");
+			initialize(deck.arrayPerguntas[deck.dificeis[randPerg]], deck.categoria, ordem);
 		}
-		initialize();
+		
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
-	public void initialize() {
+	public void initialize(Pergunta pergunta, String categoria, int[] ordem ) {
+		
 		setBackground(Color.WHITE);
 		setTitle("Tela Perguntas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,23 +88,29 @@ public class TelaPergunta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTrecho_inicial = new JLabel("Qual a porcentagem de emissões de dióxido de carbono que s�o absorvidas pelo oceanos todos os anos?");
+		JLabel lblTrecho_inicial = new JLabel(pergunta.pergunta);
 		lblTrecho_inicial.setForeground(Color.WHITE);
-		//lblTrecho_inicial.setHorizontalAlignment(SwingConstants.EAST);
 		lblTrecho_inicial.setFont(new Font("Pagul", Font.BOLD, 16));
 		lblTrecho_inicial.setBounds(35, 162, 740, 39);
 		contentPane.add(lblTrecho_inicial);
 		
-		JLabel lblCategoria = new JLabel("Geografia");
-		//lblCategoria.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblCategoria = new JLabel(categoria);
 		lblCategoria.setForeground(Color.WHITE);
 		lblCategoria.setFont(new Font("Pagul", Font.BOLD, 57));
 		lblCategoria.setBounds(252, 42, 312, 84);
 		contentPane.add(lblCategoria);
 		
-		JButton btnLetraA = new JButton("A. 10% - 20%");
+		JButton btnLetraA = new JButton(pergunta.alternativa[ordem[0]]);
 		btnLetraA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(ordem[0] == 0) {
+					//correto
+					System.out.print("correto!");
+				}
+				else {
+					//errado
+					System.out.print("errado!");
+				}
 			}
 		});
 		btnLetraA.setFont(new Font("Pagul", Font.BOLD, 20));
@@ -88,21 +119,59 @@ public class TelaPergunta extends JFrame {
 		btnLetraA.setBounds(35, 306, 350, 50);
 		contentPane.add(btnLetraA);
 		
-		JButton btnLetraB = new JButton("B. 20% - 30%");
+		JButton btnLetraB = new JButton(pergunta.alternativa[ordem[1]]);
+		btnLetraB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(ordem[1] == 0) {
+					//correto
+					System.out.print("correto!");
+				}
+				else {
+					//errado
+					System.out.print("errado!");
+				}
+			}
+		});
 		btnLetraB.setFont(new Font("Pagul", Font.BOLD, 20));
 		btnLetraB.setBackground(new Color(211, 214, 216));
 		btnLetraB.setForeground(new Color(5, 61, 87));
 		btnLetraB.setBounds(411, 305, 350, 52);
 		contentPane.add(btnLetraB);
 		
-		JButton btnLetraC = new JButton("C. 40% - 50%");
+		JButton btnLetraC = new JButton(pergunta.alternativa[ordem[2]]);
+		btnLetraC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(ordem[2] == 0) {
+					//correto
+					System.out.print("correto!");
+				}
+				else {
+					//errado
+					System.out.print("errado!");
+				}
+			}
+		});
 		btnLetraC.setFont(new Font("Pagul", Font.BOLD, 20));
 		btnLetraC.setBackground(new Color(211, 214, 216));
 		btnLetraC.setForeground(new Color(5, 61, 87));
 		btnLetraC.setBounds(35, 427, 350, 52);
 		contentPane.add(btnLetraC);
 		
-		JButton btnLetraD = new JButton("D. 50%");
+		JButton btnLetraD = new JButton(pergunta.alternativa[ordem[3]]);
+		btnLetraD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(ordem[3] == 0) {
+					//correto
+					System.out.print("correto!");
+					
+				}
+				else {
+					//errado
+					System.out.print("errado!");
+				}
+			
+			}
+		});
 		btnLetraD.setFont(new Font("Pagul", Font.BOLD, 20));
 		btnLetraD.setBackground(new Color(211, 214, 216));
 		btnLetraD.setForeground(new Color(5, 61, 87));

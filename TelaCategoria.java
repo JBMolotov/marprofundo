@@ -19,7 +19,9 @@ import java.awt.event.ActionEvent;
 public class TelaCategoria extends JFrame {
 
 	private JPanel contentPane;
-
+	private DeckDePerguntas perguntas = new DeckDePerguntas(15);
+	private Placar placar;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -40,9 +42,12 @@ public class TelaCategoria extends JFrame {
 
 	//Cria a aplicação
 	public TelaCategoria() {
-		String cat[] = {"História", "Biologia", "Geografia", "Matemática"};
-		int randNum = ThreadLocalRandom.current().nextInt(0, 3 + 1);
-		initialize(cat[randNum]);
+		String cat[] = {"Historia", "Biologia", "Geografia", "Matematica"};
+		int randNum = ThreadLocalRandom.current().nextInt(0, 4);
+		String categoria = cat[randNum];
+		initialize(categoria);
+		placar = new Placar(0, "teste");
+		perguntas.lerPerguntas(categoria);
 		
 	}
 	
@@ -63,9 +68,9 @@ public class TelaCategoria extends JFrame {
 		JButton btnFacil = new JButton("Facil - 5 Pontos");
 		btnFacil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('f');
+				TelaPergunta frame = new TelaPergunta('f', perguntas);
 				frame.setVisible(true);
-				//dispose();
+				dispose();
 			}
 		});
 		btnFacil.setForeground(new Color(5, 61, 87));
@@ -78,8 +83,9 @@ public class TelaCategoria extends JFrame {
 		JButton btnMedio = new JButton("Medio - 10 Pontos");
 		btnMedio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('m');
+				TelaPergunta frame = new TelaPergunta('m', perguntas);
 				frame.setVisible(true);
+				dispose();
 			}
 		});
 		btnMedio.setForeground(new Color(5, 61, 87));
@@ -91,8 +97,9 @@ public class TelaCategoria extends JFrame {
 		JButton btnDificil = new JButton("Dificil - 20 Pontos");
 		btnDificil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('d');
+				TelaPergunta frame = new TelaPergunta('d', perguntas);
 				frame.setVisible(true);
+				dispose();
 			}
 		});
 		btnDificil.setForeground(new Color(5, 61, 87));
