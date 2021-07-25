@@ -20,7 +20,6 @@ public class TelaCategoria extends JFrame {
 
 	private JPanel contentPane;
 	private DeckDePerguntas perguntas = new DeckDePerguntas(15);
-	private Placar placar;
 	
 	/**
 	 * Launch the application.
@@ -29,7 +28,7 @@ public class TelaCategoria extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCategoria frame = new TelaCategoria();
+					TelaCategoria frame = new TelaCategoria(null);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -41,19 +40,18 @@ public class TelaCategoria extends JFrame {
 	}
 
 	//Cria a aplicação
-	public TelaCategoria() {
+	public TelaCategoria(Placar atual) {
 		String cat[] = {"Historia", "Biologia", "Geografia", "Matematica"};
 		int randNum = ThreadLocalRandom.current().nextInt(0, 4);
 		String categoria = cat[randNum];
-		initialize(categoria);
-		placar = new Placar(0, "teste");
+		initialize(categoria, atual);
 		perguntas.lerPerguntas(categoria);
 		
 	}
 	
 	
 	//Cria a tela
-	public void initialize(String materia) {
+	public void initialize(String materia, Placar atual) {
 		setResizable(false);
 		setBackground(Color.WHITE);
 		setTitle("Categoria");
@@ -68,7 +66,7 @@ public class TelaCategoria extends JFrame {
 		JButton btnFacil = new JButton("Facil - 5 Pontos");
 		btnFacil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('f', perguntas);
+				TelaPergunta frame = new TelaPergunta('f', perguntas, atual);
 				frame.setVisible(true);
 				dispose();
 			}
@@ -83,7 +81,7 @@ public class TelaCategoria extends JFrame {
 		JButton btnMedio = new JButton("Medio - 10 Pontos");
 		btnMedio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('m', perguntas);
+				TelaPergunta frame = new TelaPergunta('m', perguntas, atual);
 				frame.setVisible(true);
 				dispose();
 			}
@@ -97,7 +95,7 @@ public class TelaCategoria extends JFrame {
 		JButton btnDificil = new JButton("Dificil - 20 Pontos");
 		btnDificil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaPergunta frame = new TelaPergunta('d', perguntas);
+				TelaPergunta frame = new TelaPergunta('d', perguntas, atual);
 				frame.setVisible(true);
 				dispose();
 			}

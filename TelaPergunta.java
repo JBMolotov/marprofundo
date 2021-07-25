@@ -29,8 +29,7 @@ public class TelaPergunta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DeckDePerguntas p = null;
-					TelaPergunta frame = new TelaPergunta('a', p);
+					TelaPergunta frame = new TelaPergunta('a', null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +54,7 @@ public class TelaPergunta extends JFrame {
 	
 	
 	//Cria a aplicação
-	public TelaPergunta(char dificuldade, DeckDePerguntas deck) {
+	public TelaPergunta(char dificuldade, DeckDePerguntas deck, Placar atual) {
 		
 		int randPerg = ThreadLocalRandom.current().nextInt(0, 5);
 		
@@ -63,11 +62,11 @@ public class TelaPergunta extends JFrame {
 		shuffleArray(ordem);
 		
 		if (dificuldade == 'f') {
-			initialize(deck.arrayPerguntas[deck.faceis[randPerg]], deck.categoria, ordem);
+			initialize(deck.arrayPerguntas[deck.faceis[randPerg]], deck.categoria, ordem, 'f', atual);
 		} else if (dificuldade == 'm') {
-			initialize(deck.arrayPerguntas[deck.medias[randPerg]], deck.categoria, ordem);
+			initialize(deck.arrayPerguntas[deck.medias[randPerg]], deck.categoria, ordem, 'm',atual);
 		} else if (dificuldade == 'd') {
-			initialize(deck.arrayPerguntas[deck.dificeis[randPerg]], deck.categoria, ordem);
+			initialize(deck.arrayPerguntas[deck.dificeis[randPerg]], deck.categoria, ordem, 'd',atual);
 		}
 		
 	}
@@ -76,7 +75,7 @@ public class TelaPergunta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void initialize(Pergunta pergunta, String categoria, int[] ordem ) {
+	public void initialize(Pergunta pergunta, String categoria, int[] ordem, char dificuldade, Placar atual ) {
 		
 		setBackground(Color.WHITE);
 		setTitle("Tela Perguntas");
@@ -104,12 +103,43 @@ public class TelaPergunta extends JFrame {
 		btnLetraA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(ordem[0] == 0) {
-					//correto
-					System.out.print("correto!");
+					JOptionPane.showMessageDialog(null, "RESPOSTA CORRETA!");
+					switch (dificuldade)
+					{
+						case 'f':
+							atual.addToPlacar(5);
+							break;
+						case 'm':
+							atual.addToPlacar(10);
+							break;
+						case 'd':
+							atual.addToPlacar(20);
+							break;
+					}
+					TelaCategoria frame = new TelaCategoria(atual);
+					frame.setVisible(true);
+					dispose();
 				}
 				else {
-					//errado
-					System.out.print("errado!");
+					
+					if (atual.getPlacar() > 0) {
+						//Se já tiver acertado algo, adiciona ao placar
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Vamos te adicionar ao placar!");
+						
+						Arquivos arq = new Arquivos();
+						arq.addPessoaPlacar(atual);
+						
+						TelaPlacar frame = new TelaPlacar();
+						frame.setVisible(true);
+						dispose();
+					}
+					else {
+						//Senão só fala que errou e recomeça
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Voltando a tela inicial!");
+						TelaInicial frame = new TelaInicial();
+						frame.setVisible(true);
+						dispose();
+					}
 				}
 			}
 		});
@@ -123,12 +153,43 @@ public class TelaPergunta extends JFrame {
 		btnLetraB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(ordem[1] == 0) {
-					//correto
-					System.out.print("correto!");
+					JOptionPane.showMessageDialog(null, "RESPOSTA CORRETA!");
+					switch (dificuldade)
+					{
+						case 'f':
+							atual.addToPlacar(5);
+							break;
+						case 'm':
+							atual.addToPlacar(10);
+							break;
+						case 'd':
+							atual.addToPlacar(20);
+							break;
+					}
+					TelaCategoria frame = new TelaCategoria(atual);
+					frame.setVisible(true);
+					dispose();
 				}
 				else {
-					//errado
-					System.out.print("errado!");
+					
+					if (atual.getPlacar() > 0) {
+						//Se já tiver acertado algo, adiciona ao placar
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Vamos te adicionar ao placar!");
+						
+						Arquivos arq = new Arquivos();
+						arq.addPessoaPlacar(atual);
+						
+						TelaPlacar frame = new TelaPlacar();
+						frame.setVisible(true);
+						dispose();
+					}
+					else {
+						//Senão só fala que errou e recomeça
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Voltando a tela inicial!");
+						TelaInicial frame = new TelaInicial();
+						frame.setVisible(true);
+						dispose();
+					}
 				}
 			}
 		});
@@ -142,12 +203,43 @@ public class TelaPergunta extends JFrame {
 		btnLetraC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(ordem[2] == 0) {
-					//correto
-					System.out.print("correto!");
+					JOptionPane.showMessageDialog(null, "RESPOSTA CORRETA!");
+					switch (dificuldade)
+					{
+						case 'f':
+							atual.addToPlacar(5);
+							break;
+						case 'm':
+							atual.addToPlacar(10);
+							break;
+						case 'd':
+							atual.addToPlacar(20);
+							break;
+					}
+					TelaCategoria frame = new TelaCategoria(atual);
+					frame.setVisible(true);
+					dispose();
 				}
 				else {
-					//errado
-					System.out.print("errado!");
+					
+					if (atual.getPlacar() > 0) {
+						//Se já tiver acertado algo, adiciona ao placar
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Vamos te adicionar ao placar!");
+						
+						Arquivos arq = new Arquivos();
+						arq.addPessoaPlacar(atual);
+						
+						TelaPlacar frame = new TelaPlacar();
+						frame.setVisible(true);
+						dispose();
+					}
+					else {
+						//Senão só fala que errou e recomeça
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Voltando a tela inicial!");
+						TelaInicial frame = new TelaInicial();
+						frame.setVisible(true);
+						dispose();
+					}
 				}
 			}
 		});
@@ -161,15 +253,44 @@ public class TelaPergunta extends JFrame {
 		btnLetraD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(ordem[3] == 0) {
-					//correto
-					System.out.print("correto!");
-					
+					JOptionPane.showMessageDialog(null, "RESPOSTA CORRETA!");
+					switch (dificuldade)
+					{
+						case 'f':
+							atual.addToPlacar(5);
+							break;
+						case 'm':
+							atual.addToPlacar(10);
+							break;
+						case 'd':
+							atual.addToPlacar(20);
+							break;
+					}
+					TelaCategoria frame = new TelaCategoria(atual);
+					frame.setVisible(true);
+					dispose();
 				}
 				else {
-					//errado
-					System.out.print("errado!");
+					
+					if (atual.getPlacar() > 0) {
+						//Se já tiver acertado algo, adiciona ao placar
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Vamos te adicionar ao placar!");
+						
+						Arquivos arq = new Arquivos();
+						arq.addPessoaPlacar(atual);
+						
+						TelaPlacar frame = new TelaPlacar();
+						frame.setVisible(true);
+						dispose();
+					}
+					else {
+						//Senão só fala que errou e recomeça
+						JOptionPane.showMessageDialog(null, "RESPOSTA ERRADA! Voltando a tela inicial!");
+						TelaInicial frame = new TelaInicial();
+						frame.setVisible(true);
+						dispose();
+					}
 				}
-			
 			}
 		});
 		btnLetraD.setFont(new Font("Pagul", Font.BOLD, 20));

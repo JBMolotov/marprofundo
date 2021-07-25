@@ -30,7 +30,7 @@ public class DeckDePerguntas {
 
 		this.categoria = categoria;
 		
-		System.out.print();
+		//System.out.print();
 		
 		for(int i = 0; i < limitePerguntas; i++)
 		{

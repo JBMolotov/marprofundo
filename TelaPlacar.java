@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
 public class TelaPlacar extends JFrame {
@@ -33,10 +34,17 @@ public class TelaPlacar extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	//Cria a aplicação
 	public TelaPlacar() {
+		String nomes[] = Arquivos.lerPlacar();
+		String nomePontos[] = nomes[0].split(Pattern.quote(",")); //pegar os nomes e separar
+		
+		initialize(nomePontos);
+	}
+	
+	
+	//Create the frame.
+	public void initialize(String nomePontos[]) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -51,67 +59,86 @@ public class TelaPlacar extends JFrame {
 		lblNewLabel_1_1.setBounds(333, 51, 157, 96);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JLabel lbl1Lugar = new JLabel("1. Vazio");
-		lbl1Lugar.setForeground(Color.WHITE);
-		lbl1Lugar.setFont(new Font("Pagul", Font.BOLD, 25));
-		lbl1Lugar.setBounds(257, 145, 309, 30);
-		contentPane.add(lbl1Lugar);
+		if(nomePontos.length >= 1) {
+			JLabel lbl1Lugar = new JLabel("1. " + nomePontos[0]);
+			lbl1Lugar.setForeground(Color.WHITE);
+			lbl1Lugar.setFont(new Font("Pagul", Font.BOLD, 25));
+			lbl1Lugar.setBounds(260, 145, 309, 30);
+			contentPane.add(lbl1Lugar);
+		}
+			
+		if(nomePontos.length >= 2) {
+			JLabel lbl2Lugar = new JLabel("2. " + nomePontos[1]);
+			lbl2Lugar.setFont(new Font("Pagul", Font.BOLD, 22));
+			lbl2Lugar.setForeground(Color.WHITE);
+			lbl2Lugar.setBounds(260, 187, 243, 23);
+			contentPane.add(lbl2Lugar);
+		}
+			
+		if(nomePontos.length >= 3) {
+			JLabel lbl3Lugar = new JLabel("3. " + nomePontos[2]);
+			lbl3Lugar.setForeground(Color.WHITE);
+			lbl3Lugar.setFont(new Font("Pagul", Font.BOLD, 20));
+			lbl3Lugar.setBounds(260, 222, 205, 16);
+			contentPane.add(lbl3Lugar);
+		}
 		
-		JLabel lbl2Lugar = new JLabel("2. Vazio");
-		lbl2Lugar.setFont(new Font("Pagul", Font.BOLD, 22));
-		lbl2Lugar.setForeground(Color.WHITE);
-		lbl2Lugar.setBounds(284, 187, 243, 23);
-		contentPane.add(lbl2Lugar);
+		if(nomePontos.length >= 4) {
+			JLabel lbl4Lugar = new JLabel("4. " + nomePontos[3]);
+			lbl4Lugar.setForeground(Color.WHITE);
+			lbl4Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl4Lugar.setBounds(260, 250, 205, 16);
+			contentPane.add(lbl4Lugar);
+		}
 		
-		JLabel lbl3Lugar = new JLabel("3. Vazio");
-		lbl3Lugar.setForeground(Color.WHITE);
-		lbl3Lugar.setFont(new Font("Pagul", Font.BOLD, 20));
-		lbl3Lugar.setBounds(305, 222, 205, 16);
-		contentPane.add(lbl3Lugar);
+		if(nomePontos.length >= 5) {
+			JLabel lbl5Lugar = new JLabel("5. " + nomePontos[4]);
+			lbl5Lugar.setForeground(Color.WHITE);
+			lbl5Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl5Lugar.setBounds(260, 280, 205, 16);
+			contentPane.add(lbl5Lugar);
+		}
 		
-		JLabel lbl4Lugar = new JLabel("4. Vazio");
-		lbl4Lugar.setForeground(Color.WHITE);
-		lbl4Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl4Lugar.setBounds(310, 250, 205, 16);
-		contentPane.add(lbl4Lugar);
+		if(nomePontos.length >= 6) {
+			JLabel lbl6Lugar = new JLabel("6. " + nomePontos[5]);
+			lbl6Lugar.setForeground(Color.WHITE);
+			lbl6Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl6Lugar.setBounds(260, 310, 205, 16);
+			contentPane.add(lbl6Lugar);
+		}
 		
-		JLabel lbl5Lugar = new JLabel("5. Vazio");
-		lbl5Lugar.setForeground(Color.WHITE);
-		lbl5Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl5Lugar.setBounds(310, 280, 205, 16);
-		contentPane.add(lbl5Lugar);
+		if(nomePontos.length >= 7) {
+			JLabel lbl7Lugar = new JLabel("7. " + nomePontos[6]);
+			lbl7Lugar.setForeground(Color.WHITE);
+			lbl7Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl7Lugar.setBounds(260, 340, 205, 16);
+			contentPane.add(lbl7Lugar);
+		}
 		
-		JLabel lbl6Lugar = new JLabel("6. Vazio");
-		lbl6Lugar.setForeground(Color.WHITE);
-		lbl6Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl6Lugar.setBounds(310, 310, 205, 16);
-		contentPane.add(lbl6Lugar);
+		if(nomePontos.length >= 8) {
+			JLabel lbl8Lugar;
+			lbl8Lugar = new JLabel("8. " + nomePontos[7]);
+			lbl8Lugar.setForeground(Color.WHITE);
+			lbl8Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl8Lugar.setBounds(260, 370, 205, 16);
+			contentPane.add(lbl8Lugar);
+		}
 		
-		JLabel lbl7Lugar = new JLabel("7. Vazio");
-		lbl7Lugar.setForeground(Color.WHITE);
-		lbl7Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl7Lugar.setBounds(310, 340, 205, 16);
-		contentPane.add(lbl7Lugar);
+		if(nomePontos.length >= 9) {
+			JLabel lbl9Lugar = new JLabel("9. " + nomePontos[8]);
+			lbl9Lugar.setForeground(Color.WHITE);
+			lbl9Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl9Lugar.setBounds(260, 400, 205, 16);
+			contentPane.add(lbl9Lugar);
+		}
 		
-		JLabel lbl8Lugar;
-		lbl8Lugar = new JLabel("8. Vazio");
-		lbl8Lugar.setForeground(Color.WHITE);
-		lbl8Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl8Lugar.setBounds(310, 370, 205, 16);
-		contentPane.add(lbl8Lugar);
-		
-		JLabel lbl9Lugar = new JLabel("9. Vazio");
-		lbl9Lugar.setForeground(Color.WHITE);
-		lbl9Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl9Lugar.setBounds(310, 400, 205, 16);
-		contentPane.add(lbl9Lugar);
-		
-		JLabel lbl10Lugar = new JLabel("10. Vazio");
-		lbl10Lugar.setForeground(Color.WHITE);
-		lbl10Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
-		lbl10Lugar.setBounds(310, 430, 205, 16);
-		contentPane.add(lbl10Lugar);
-		
+		if(nomePontos.length >= 10) {
+			JLabel lbl10Lugar = new JLabel("10. " + nomePontos[9]);
+			lbl10Lugar.setForeground(Color.WHITE);
+			lbl10Lugar.setFont(new Font("Pagul", Font.BOLD, 18));
+			lbl10Lugar.setBounds(260, 430, 205, 16);
+			contentPane.add(lbl10Lugar);
+		}
 
 		
 		

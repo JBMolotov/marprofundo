@@ -37,7 +37,7 @@ public class TelaInicial extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaInicial() {
+	public TelaInicial() {		
 		setResizable(false);
 		setBackground(Color.WHITE);
 		setTitle("Tela Inicial");
@@ -51,8 +51,8 @@ public class TelaInicial extends JFrame {
 		
 		JButton btnJogar = new JButton("Jogar");
 		btnJogar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaCategoria frame = new TelaCategoria();
+			public void actionPerformed(ActionEvent arg0) {				
+				TelaNome frame = new TelaNome();
 				frame.setVisible(true);
 				dispose();
 			}
